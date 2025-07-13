@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Resume - Bharat Khatoliya</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f0f2ec;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .skills-container {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: none;
+      }
+
+      .skills-heading {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-top: 24px;
+        margin-bottom: 8px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #ccc;
+        display: inline-block;
+      }
+
+      .skill-category {
+        margin-bottom: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .skill-tag {
+        background-color: #e0e0e0;
+        color: #333;
+        padding: 6px 10px;
+        border-radius: 5px;
+        font-size: 0.85em;
+        white-space: nowrap;
+      }
+
+      .container {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .download-btn {
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .resume-page {
+        width: 210mm;
+        min-height: 297mm;
+        background: white;
+        margin: 0 auto;
+        padding: 7mm 9mm;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 24pt;
+        margin-bottom: 0;
+      }
+
+     .page-break-here {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+
+      h2 {
+        font-size: 12pt;
+        font-weight: normal;
+        color: #555;
+        margin-top: 4px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 16px 0;
+        gap: 10px;
+      }
+
+      .contact-info span {
+        background: #e0e0e0;
+        padding: 8px 12px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11pt;
+      }
+
+      .contact-info a {
+        text-decoration: none;
+        color: #3366cc;
+      }
+
+      .section-title {
+        font-weight: bold;
+        margin-top: 24px;
+        margin-bottom: 8px;
+        font-size: 12pt;
+      }
+
+      .section-content {
+        font-size: 11pt;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .experience-item {
+        /* Spacing between different job roles */
+        margin-bottom: 15px;
+      }
+
+      .experience-title {
+        font-size: 11.5pt; /* Slightly smaller than section-title, larger than content */
+        font-weight: bold;
+        margin-top: 15px; /* Space up to each job title */
+        margin-bottom: 4px; /* Space down to job title */
+      }
+
+      .experience-details {
+        font-size: 10.5pt; /* Smaller font for company/date */
+        color: #555;
+        margin-bottom: 8px; /* Space before bullet points */
+      }
+
+      .experience-description ul {
+        list-style-type: disc; /* Bullet points */
+        margin: 0;
+        padding-left: 20px; /* Indent bullet points */
+        font-size: 11pt;
+        line-height: 1.6;
+      }
+
+      .experience-description li {
+        margin-bottom: 5px; /* Space between bullet points */
+      }
+
+      /* Styles for Education Section (similar to experience item) */
+      .education-item {
+        margin-bottom: 15px; /* Spacing between different degrees */
+      }
+
+      .education-degree {
+        font-size: 11.5pt;
+        font-weight: bold;
+        margin-top: 15px; /* Space above each degree title */
+        margin-bottom: 4px; /* Space below degree title */
+      }
+
+      .education-details {
+        font-size: 10.5pt;
+        color: #555;
+      }
+
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        .download-btn {
+          display: none;
+        }
+
+        .resume-page {
+          box-shadow: none;
+          margin: 0;
+          border-radius: 0;
+        }
+
+        /* --- Enhanced Page Break Control for Print --- */
+
+        /* Force a page break before major new sections */
+        .section-title {
+          page-break-before: auto; /* Default for general section titles */
+          page-break-after: avoid; /* Keep title with its content */
+          break-before: auto;
+          break-after: avoid;
+          orphans: 3;
+          widows: 3;
+        }
+
+        /* Specifically target the major sections to start on a new page if needed */
+        /* This is more explicit and might create blank space but ensures separation */
+        .skills-container,
+        .experience-item, /* Try to keep each experience item whole */
+        .education-item { /* Try to keep each education item whole */
+          page-break-inside: avoid; /* Prevent breaking *within* these elements */
+          break-inside: avoid;
+        }
+
+        /* Forcing a new page before the main 'EXPERIENCE' and 'EDUCATION' sections */
+        /* This might result in a blank space if they happen to fall at the top of a page already. */
+        /* Use with caution if you want minimal blank pages. */
+        .section-title:nth-of-type(2), /* Targets the second .section-title (EXPERIENCE) */
+        .section-title:nth-of-type(3) { /* Targets the third .section-title (EDUCATION) */
+          page-break-before: always;
+          break-before: page; /* Modern equivalent */
+        }
+
+        /* Ensure that the header of a job/education item stays with its first list item */
+        .experience-title, .experience-details,
+        .education-degree, .education-details {
+          page-break-after: avoid;
+          break-after: avoid;
+        }
+
+        /* Ensure lists don't break awkwardly */
+        .experience-description ul {
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+        
+        .experience-description li {
+          page-break-inside: avoid; /* Try to keep list items together if they are very short */
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <button class="download-btn" onclick="downloadPDF()">Download as PDF</button>
+    </div>
+
+    <div class="resume-page" id="resumeContent">
+      <h1>Bharat Khatoliya</h1>
+      <h2>SENIOR SOFTWARE ENGINEER | RUBY ON RAILS DEVELOPER</h2>
+
+      <div class="contact-info">
+        <span>📞 909-847-6865</span>
+        <span>📧 bharat.khatoliya0512@gmail.com</span>
+        <span>📍 Indore</span>
+        <span>🔗 <a href="https://www.linkedin.com/in/bharatkhatoliya/" target="_blank">linkedin.com/in/bharatkhatoliya</a></span>
+      </div>
+
+      <div class="section-title">PROFESSIONAL SUMMARY</div>
+      <hr>
+      <div class="section-content">
+        Skilled Senior Software Engineer | Ruby on Rails Developer with 6+ years of experience in developing scalable solutions using Ruby on Rails, ReactJS, and PostgreSQL. Proven track record of leading code reviews and collaborating with cross-functional teams to deliver high-quality software. Eager to leverage expertise in innovative software development to drive technological advancements in a dynamic environment.
+      </div>
+
+      <div class="skills-container">
+        <div class="skills-heading">SKILLS</div>
+        <div class="skill-category">
+          <span class="skill-tag">Ruby on Rails(v3.x – 6.x)</span>
+          <span class="skill-tag">Delayed Job</span>
+          <span class="skill-tag">Sidekiq</span>
+          <span class="skill-tag">Rspec</span>
+          <span class="skill-tag">Reactjs</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">JQuery</span>
+        </div>
+        <div class="skill-category">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">Tailwind Css</span>
+          <span class="skill-tag">Bootstrap</span>
+          <span class="skill-tag">Material UI</span>
+          <span class="skill-tag">HAML</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Postman</span>
+        </div>
+        <div class="skill-category">
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Postgresql</span>
+          <span class="skill-tag">Redis</span>
+          <span class="skill-tag">OOPS</span>
+          <span class="skill-tag">Design Patterns</span>
+          <span class="skill-tag">REST API</span>
+          <span class="skill-tag">GraphQL</span>
+        </div>
+        <div class="skill-category">
+          <span class="skill-tag">Heroku</span>
+          <span class="skill-tag">AWS EC 2</span>
+          <span class="skill-tag">Mina</span>
+          <span class="skill-tag">Performance and Monitoring Tools</span>
+          <span class="skill-tag">Project Management Tools</span>
+        </div>
+        <div class="skill-category">
+          <span class="skill-tag">Version Control Git</span>
+          <span class="skill-tag">Github</span>
+        </div>
+      </div>
+
+      <div class="section-title">EDUCATION</div>
+      <hr>
+
+      <div class="education-item">
+        <div class="education-degree">MASTER OF COMPUTER APPLICATIONS IN COMPUTER APPLICATIONS</div>
+        <div class="education-details">Maharaja Ranjit Singh College, March 2019</div>
+      </div>
+
+      <div class="education-item">
+        <div class="education-degree">BACHELOR OF COMPUTER APPLICATIONS IN COMPUTER APPLICATIONS</div>
+        <div class="education-details">Govt. Autonoumas Holkar Science College, May 2017</div>
+      </div>
+
+      <div class="section-title">EXPERIENCE</div>
+      <hr>
+
+      <div class="experience-item">
+        <div class="experience-title">SENIOR SOFTWARE ENGINEER, Mumbai</div>
+        <div class="experience-details"><b>Checkmate (Remote), June 2023–March 2025</b></div>
+        <div class="experience-description">
+          <ul>
+            <li>Developed and maintained scalable Ruby on Rails, ReactJS, GraphQL software solutions, utilizing Flipper Gem for staged rollouts, ensuring high performance and responsiveness for front-end applications.</li>
+            <li>Led code reviews and Implemented best practices, significantly improving code quality and reducing bugs and performance issues by fostering a culture of collaboration among team members.</li>
+            <li>Collaborated effectively with cross-functional teams to gather requirements, translating complex business needs into precise technical specifications for software development projects.</li>
+            <li><b>Projects Worked on:</b> 
+              <span>🔗 <a href="https://www.itsacheckmate.com/" target="_blank">It's a Checkmate</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item page-break-here">
+        <div class="experience-title">SENIOR SOFTWARE ENGINEER, Bangalore</div>
+        <div class="experience-details"><b>Nalashaa Solutions (Remote), April 2022–May 2023</b></div>
+        <div class="experience-description">
+          <ul>
+            <li>Guided junior developers through code reviews and pair programming, helping maintain code quality and team standards.</li>
+            <li>Actively engaged in daily stand-ups and sprint planning to clarify requirements, estimate tasks, and deliver features on time.</li>
+            <li>Collaborated with PMs, engineers, and QA to debug issues and ship scalable fullstack features.</li>
+            <li>Delivered features using Ruby on Rails, Coffeescript, Golang, and PostgreSQL within Agile sprints.</li>
+            <li><b>Projects Worked on:</b> 
+              <span>🔗 <a href="https://wenergysoftware.com/" target="_blank">Wenergy Software</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-title">RUBY ON RAILS DEVELOPER, Indore</div>
+        <div class="experience-details"><b>Protonshub technologies pvt. ltd (Remote), November 2020–April 2022</b></div>
+        <div class="experience-description">
+          <ul>
+            <li>Developed robust back-end functionality using Ruby on Rails and Active Admin, with a strong focus on API-based architecture.</li>
+            <li>Utilized tools such as Postman, Insomnia, and Miro Board for efficient API testing, debugging, and collaboration.</li>
+            <li>Built responsive front-end interfaces using HTML, CSS, JavaScript, and JQuery, ensuring optimal user experience.</li>
+            <li>Collaborated directly with clients and Scrum Masters to plan features, address site issues, and resolve technical queries.</li>
+            <li>Demonstrated strong ability to work both independently and as a contributing member of a collaborative Agile team.</li>
+            <li>Razorpay Integration, Shiprocket Integration</li>
+            <li><b>Projects Worked on:</b> 
+              <span>🔗 <a href="https://www.builder.ai/" target="_blank">Builder ai</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-title">FULL STACK RUBY ON RAILS DEVELOPER, Indore</div>
+        <div class="experience-details"><b>Gammastack webtech pvt. ltd, August 2018–October 2020</b></div>
+        <div class="experience-description">
+          <ul>
+            <li>Demonstrated a high level of initiative and creativity while tackling difficult development tasks.</li>
+            <li>Developed strong communication and organizational skills through active participation in group projects.</li>
+            <li>Gained a general understanding of working in live projects and successfully applied appropriate methods for various tasks.</li>
+            <li>Received comprehensive training in Ruby on Rails and applied skills in HTML, CSS, Bootstrap, JQuery, and JavaScript while working on projects.</li>
+            <li>Coinpayment Integration</li>
+            <li><b>Projects Worked on:</b>
+              <span>🔗 <a href="https://www.iqglobal.com/" target="_blank">IQ global</a></span>
+              <span>🔗 <a href="https://tether.bet/" target="_blank">Tether bet</a></span>
+              <span>🔗 <a href="https://www.charityauctionstoday.com" target="_blank">Charity Auctions Today</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      function downloadPDF() {
+        const element = document.getElementById('resumeContent');
+        const opt = {
+          margin: 0,
+          filename: 'Bharat_Khatoliya_Resume.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().from(element).set(opt).save();
+      }
+    </script>
+  </body>
+</html>
